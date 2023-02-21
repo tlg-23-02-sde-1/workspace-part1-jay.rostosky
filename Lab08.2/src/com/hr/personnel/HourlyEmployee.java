@@ -7,6 +7,7 @@ public class HourlyEmployee extends Employee {
     private double hours;
 
     public HourlyEmployee() {
+        super();                // a superclass ctor is always called, whether you say this or not!
     }
 
     public HourlyEmployee(String name, LocalDate hireDate) {
@@ -19,6 +20,13 @@ public class HourlyEmployee extends Employee {
         setHours(hours);        // ditto here
     }
 
+    // business methods
+    @Override
+    public void pay() {
+        System.out.println(getName() + " is paid hourly " + (getRate() * getHours()));
+    }
+
+    // accessor methods
     public double getRate() {
         return rate;
     }
@@ -35,8 +43,8 @@ public class HourlyEmployee extends Employee {
         this.hours = hours;
     }
 
+    @Override
     public String toString() {
-        return "HourlyEmployee: name=" + getName() + ", hireDate=" + getHireDate() +
-                ", rate=" + getRate() + ", hours=" + getHours();
+        return super.toString() + ", rate=" + getRate() + ", hours=" + getHours();
     }
 }

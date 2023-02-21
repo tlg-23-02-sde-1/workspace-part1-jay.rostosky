@@ -31,16 +31,19 @@ public class Department {
 
     // constructors
     public Department() {
+        super();    // a superclass ctor is always called, whether you say this or not!
     }
 
     public Department(String name, String location) {
+        super();    // a superclass ctor is always called, whether you say this or not!
         setName(name);
         setLocation(location);
     }
 
     // business methods
     public void listEmployees() {
-        // Note: we don't use for-each here because we only want to access the array where employees were added.
+        // Note: we don't use for-each here because we only want to access the array
+        // where employees were added, i.e., we don't want to hit the "null" slots in the array.
         // Question: what is in the array for indices where no Employee was added?  null!
         for (int i = 0; i < currentIndex; i++) {
             System.out.println(employees[i]);  // toString() automatically called
@@ -53,8 +56,18 @@ public class Department {
         }
     }
 
+    public void payEmployees() {
+        for (int i = 0; i < currentIndex; i++) {
+            employees[i].pay();
+        }
+    }
+
     // helper method to add an Employee to the array
-    public void addEmployee(Employee emp) {  // Employee ref to one of Employee, Hourly, Salaried
+
+    // 'emp' is a reference of type Employee, that's pointing to
+    // an Employee object, an HourlyEmployee object, or a SalariedEmployee object,
+    // depending on how the client called it
+    public void addEmployee(Employee emp) {
         employees[currentIndex++] = emp;
     }
 
@@ -75,7 +88,8 @@ public class Department {
         this.location = location;
     }
 
+    @Override
     public String toString() {
-        return "Department: name=" + getName() + ", location=" + getLocation();
+        return getClass().getSimpleName() + ": name=" + getName() + ", location=" + getLocation();
     }
 }
