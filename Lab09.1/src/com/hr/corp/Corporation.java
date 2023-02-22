@@ -14,6 +14,8 @@ import gov.irs.TaxPayer;
  * Corporate entity - also pays taxes.
  */
 public class Corporation implements TaxPayer {
+    public static final double STANDARD_DEDUCTION = 1_000_000.0;
+
     private String name;
 
     public Corporation(String name) {
@@ -25,12 +27,15 @@ public class Corporation implements TaxPayer {
         System.out.println(getName() + " paid no taxes - we lobbied hard and it worked");
     }
 
-    /*
-     * I can OPT to override the default implementation in the TaxPayer interface itself.
-     */
+    // I can OPT to override the default implementation in the TaxPayer interface itself
     @Override  // interface TaxPayer
     public void fileReturn() {
         System.out.println("Return not filed - we sent our lawyers instead");
+    }
+
+    @Override   // interface TaxPayer
+    public double getStandardDeduction() {
+        return STANDARD_DEDUCTION;
     }
 
     public String getName() {

@@ -4,6 +4,8 @@ import gov.irs.TaxPayer;
 import java.time.LocalDate;
 
 public class SalariedEmployee extends Employee {
+    public static final double STANDARD_DEDUCTION = 10_000.0;
+
     private double salary;
 
     public SalariedEmployee() {
@@ -35,6 +37,11 @@ public class SalariedEmployee extends Employee {
     @Override   // interface TaxPayer
     public void fileReturn() {
         System.out.println("Return filed electronically");
+    }
+
+    @Override   // interface TaxPayer
+    public double getStandardDeduction() {
+        return STANDARD_DEDUCTION;
     }
 
     public void takeVacation() {
