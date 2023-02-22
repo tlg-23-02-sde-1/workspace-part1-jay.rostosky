@@ -116,7 +116,7 @@ public class Television {
             this.volume = volume;
             isMuted = false;
         }
-        else {
+        else {  // invalid
             System.out.printf("Invalid volume: %s, valid range is %s-%s\n",
                     volume, MIN_VOLUME, MAX_VOLUME);
 
