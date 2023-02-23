@@ -90,7 +90,8 @@ public class Television {
             this.brand = brand;
         }
         else {                      // invalid
-            throw new InvalidBrandException(String.format("Invalid brand: %s, valid brands are %s",
+            throw new InvalidBrandException(String.format(
+                    "Invalid brand: %s, valid brands are %s",
                     brand, Arrays.toString(VALID_BRANDS)));
         }
     }
@@ -122,7 +123,8 @@ public class Television {
             isMuted = false;
         }
         else {  // invalid
-            throw new IllegalArgumentException(String.format("Invalid volume: %s, valid range is %s-%s",
+            throw new IllegalArgumentException(String.format(
+                    "Invalid volume: %s, valid range is %s-%s",
                     volume, MIN_VOLUME, MAX_VOLUME));
         }
     }

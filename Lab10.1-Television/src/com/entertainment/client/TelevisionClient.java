@@ -19,7 +19,7 @@ class TelevisionClient {
             // create an instance of Television and set its properties individually
             Television tv1 = new Television();
             tv1.setBrand("Samsung");
-            tv1.setVolume(32);  // invalid now
+            tv1.setVolume(32);
             tv1.setDisplay(DisplayType.OLED);
 
             // create a 2nd Television object via the brand-volume-display constructor
