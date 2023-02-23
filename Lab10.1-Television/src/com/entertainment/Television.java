@@ -33,7 +33,8 @@ public class Television {
         instanceCount++;
     }
 
-    public Television(String brand) throws InvalidBrandException {
+    public Television(String brand)
+    throws InvalidBrandException {
         this();
         setBrand(brand);        // delegate to setter for any validation/conversion
     }
