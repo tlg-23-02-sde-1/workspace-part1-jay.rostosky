@@ -9,7 +9,12 @@
 package com.poetry.io;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class PoemClient {
 
@@ -18,7 +23,7 @@ public class PoemClient {
      */
     public static void main(String[] args) {
         // readPoem();
-        // writePoem();
+        writePoem();
     }
 
     /**
@@ -34,13 +39,25 @@ public class PoemClient {
      * The try-with-resources below allows you to initialize the stream and auto-close it.
      */
     private static void readPoem() {
-        // TODO: initialize 'reader' variable and complete the try block
-        try (BufferedReader reader = null) {
+        try {
+            String poem = Files.readString(Path.of("famous-poem.txt"));
+            System.out.println(poem);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        /*
+        try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
+            String line;
+            while ( (line = reader.readLine()) != null ) {
+                System.out.println(line);
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
 
     /**
@@ -55,6 +72,26 @@ public class PoemClient {
      * Use a try-with-resources to initialize the stream and auto-close it.
      */
     private static void writePoem() {
-        // TODO
+        String haiku = "I have had problems...\n" +
+                "Network connectivity?\n" +
+                "Adobe Connect?";
+
+        try {
+            Files.writeString(Path.of("haiku.txt"), haiku);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*
+        try (PrintWriter out = new PrintWriter(new FileWriter("haiku.txt"))) {
+            out.println("I have had problems...");
+            out.println("Network connectivity?");
+            out.println("Adobe Connect?");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
     }
 }
