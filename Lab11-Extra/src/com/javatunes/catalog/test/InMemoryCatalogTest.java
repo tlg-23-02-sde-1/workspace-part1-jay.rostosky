@@ -28,15 +28,6 @@ class InMemoryCatalogTest {
         // testFindByCategory();
         // testSize();
         // testGetAll();
-
-        // testFindSelfTitled();
-    }
-
-    private static void testFindSelfTitled() {
-        InMemoryCatalog catalog = new InMemoryCatalog();
-
-        Collection<MusicItem> items = catalog.findSelfTitled();
-        dump(items);
     }
 
     private static void testFindById() {

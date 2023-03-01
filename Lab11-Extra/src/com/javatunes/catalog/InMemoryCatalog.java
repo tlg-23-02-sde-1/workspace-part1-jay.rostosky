@@ -114,11 +114,6 @@ public class InMemoryCatalog implements Catalog {
     public Collection<MusicItem> findSelfTitled() {
         Collection<MusicItem> result = new ArrayList<>();
 
-        for (MusicItem item : catalogData) {
-            if (item.getTitle().equals(item.getArtist())) {
-                result.add(item);
-            }
-        }
         return result;
     }
 
